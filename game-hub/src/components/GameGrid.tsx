@@ -21,7 +21,7 @@ const GameGrid = () => {
       .get<FetchGamesResponse>('/xgames')
       .then((res) => setGames(res.data.results))
       .catch((err) => SetError(err.message));
-  });
+  }, []);
 
   return (
     <>
