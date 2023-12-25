@@ -2,6 +2,7 @@ import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
 import { Grid, GridItem, Show } from '@chakra-ui/react';
+import NavBar from './components/NavBar';
 // import { Button } from '@chakra-ui/react';
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
       }}
     >
       <GridItem area="nav" bg="coral">
-        Nav
+        {/* Nav */}
+        <NavBar></NavBar>
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" bg="gold">
