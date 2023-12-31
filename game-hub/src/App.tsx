@@ -6,6 +6,7 @@ import NavBar from './components/NavBar';
 import GameGrid from './components/GameGrid';
 import GenreList from './components/GenreList';
 import { Genres } from './hooks/useGenres';
+import PlatformSelector from './components/PlatformSelector';
 
 // import { Button } from '@chakra-ui/react';
 
@@ -35,6 +36,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
+        <PlatformSelector></PlatformSelector>
         <GameGrid selectedGenre={selectedGenre}></GameGrid>
       </GridItem>
     </Grid>
