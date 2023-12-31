@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Game } from './useGames';
 import apiClient from '../services/api-client';
-import { CanceledError } from 'axios';
+import { AxiosAdapter, AxiosRequestConfig, CanceledError } from 'axios';
 
 
 interface Genres {
@@ -14,7 +14,7 @@ interface FetchResponse<T>{
     results: T[]
 } 
 
-const useData = <T>(endpoint: string) => {
+const useData = <T>(endpoint: string, deps?:any[], requestConfig? : AxiosRequestConfig) => {
  
     const [data, setData] = useState<T[]>([]);
     const [error, SetError] = useState('');
@@ -25,7 +25,7 @@ const useData = <T>(endpoint: string) => {
     
     setLoading(true);
     apiClient
-        .get<FetchResponse<T>>(endpoint,{signal: controller.signal})
+        .get<FetchResponse<T>>(endpoint,{signal: controller.signal,...requestConfig})
         .then((res) => {setData(res.data.results)
         setLoading(false)})
         .catch((err) => {
@@ -37,7 +37,7 @@ const useData = <T>(endpoint: string) => {
 
 
     return () => controller.abort();
-    }, []);
+    },deps?  [...deps]:[]);
   
     return {data , error, isLoading};
 }
