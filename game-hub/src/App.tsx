@@ -10,7 +10,7 @@ import { Genres } from './hooks/useGenres';
 // import { Button } from '@chakra-ui/react';
 
 function App() {
-  const [seletedGenre, setSelectedGenre] = useState<Genres | null>(null);
+  const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);
   // return <Button colorScheme="blue">Button</Button>;
   return (
     <Grid
@@ -29,12 +29,13 @@ function App() {
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           <GenreList
+            selectedGenre={selectedGenre}
             onSelectedGenre={(genre) => setSelectedGenre(genre)}
           ></GenreList>
         </GridItem>
       </Show>
       <GridItem area="main">
-        <GameGrid selectedGenre={seletedGenre}></GameGrid>
+        <GameGrid selectedGenre={selectedGenre}></GameGrid>
       </GridItem>
     </Grid>
   );
