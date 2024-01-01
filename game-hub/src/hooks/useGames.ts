@@ -33,6 +33,6 @@ const useGames = (gameQuery : GameQuery) => useData<Game>
   search: gameQuery.searchText
 }
 }
-);
+);   
 
 export default useGames;
